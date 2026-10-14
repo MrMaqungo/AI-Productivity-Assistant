@@ -7,6 +7,7 @@ import { Disclaimer, ReportButton } from "@/components/output-panel";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAI } from "@/lib/ai-client";
+import campaign from "@/assets/ntethe-campaign.png.asset.json";
 
 export const Route = createFileRoute("/studio")({
   head: () => ({
@@ -28,13 +29,19 @@ const QUIZ = [
   { key: "mood", q: "Your mood?", options: ["Calm & clean", "Bold & loud", "Lowkey luxury", "Sporty"] },
 ] as const;
 
-type Look = { name: string; items: string[]; tip: string };
+type Look = { name: string; items: string[]; tip: string; image?: string };
 const WA = "27637544847";
 
 const LOOK_OF_WEEK: Look = {
   name: "Ekasi Midnight",
-  items: ["Black oversized 240GSM tee (back design)", "Navy joggers", "Black cap"],
-  tip: "Let the back print breathe — keep the cap low and the sneakers clean.",
+  image: campaign.url,
+  items: [
+    "Black oversized hoodie with NTETHE chest logo",
+    "Matching black joggers",
+    "Green-and-yellow tartan flat cap",
+    "Clean white sneakers",
+  ],
+  tip: "One dark fit, one loud cap — keep the sneakers white and let the tartan do the talking.",
 };
 
 function waLink(look: Look) {
@@ -57,21 +64,32 @@ async function share(look: Look) {
 
 function LookCard({ look, featured }: { look: Look; featured?: boolean }) {
   return (
-    <div className={`flex flex-col rounded-lg border bg-card p-5 fade-up ${featured ? "border-gold/60 shadow-gold" : ""}`}>
-      <p className="font-script text-lg text-gold">{featured ? "Look of the Week" : "Your look"}</p>
-      <h3 className="text-2xl">{look.name}</h3>
-      <BrushDivider className="my-3 max-w-[90px]" />
-      <ul className="space-y-1 text-sm">
-        {look.items.map((i) => (
-          <li key={i} className="flex gap-2"><Sparkle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" />{i}</li>
-        ))}
-      </ul>
-      <p className="mt-3 flex-1 text-sm italic text-muted-foreground">“{look.tip}”</p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        <Button asChild variant="whatsapp" size="sm">
-          <a href={waLink(look)} target="_blank" rel="noreferrer"><MessageCircle /> Order on WhatsApp</a>
-        </Button>
-        <Button variant="outline" size="sm" onClick={() => share(look)}><Share2 /> Share my look</Button>
+    <div className={`flex flex-col overflow-hidden rounded-lg border bg-card fade-up ${featured ? "border-gold/60 shadow-gold" : ""}`}>
+      {look.image && (
+        <img
+          src={look.image}
+          alt={`The "${look.name}" look: black hoodie, matching joggers, tartan cap and white sneakers`}
+          width={1313}
+          height={1198}
+          className="h-64 w-full object-cover object-[center_30%] md:h-80"
+        />
+      )}
+      <div className="flex flex-1 flex-col p-5">
+        <p className="font-script text-lg text-gold">{featured ? "Look of the Week" : "Your look"}</p>
+        <h3 className="text-2xl">{look.name}</h3>
+        <BrushDivider className="my-3 max-w-[90px]" />
+        <ul className="space-y-1 text-sm">
+          {look.items.map((i) => (
+            <li key={i} className="flex gap-2"><Sparkle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" />{i}</li>
+          ))}
+        </ul>
+        <p className="mt-3 flex-1 text-sm italic text-muted-foreground">“{look.tip}”</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button asChild variant="whatsapp" size="sm">
+            <a href={waLink(look)} target="_blank" rel="noreferrer"><MessageCircle /> Order on WhatsApp</a>
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => share(look)}><Share2 /> Share my look</Button>
+        </div>
       </div>
     </div>
   );
@@ -109,7 +127,7 @@ function Studio() {
       <PageHeader eyebrow="Kasi Roots. Global Mindset." title="Kasi Style Studio" desc="Five quick questions. Three Ntethe looks made for you." />
 
       <section className="mb-12">
-        <div className="max-w-sm"><LookCard look={LOOK_OF_WEEK} featured /></div>
+        <div className="max-w-md"><LookCard look={LOOK_OF_WEEK} featured /></div>
       </section>
 
       <section className="space-y-6 rounded-lg border bg-card p-5 md:p-8">
