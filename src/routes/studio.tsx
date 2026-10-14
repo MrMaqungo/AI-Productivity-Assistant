@@ -71,7 +71,7 @@ function LookCard({ look, featured }: { look: Look; featured?: boolean }) {
           alt={`The "${look.name}" look: black hoodie, matching joggers, tartan cap and white sneakers`}
           width={1313}
           height={1198}
-          className="h-64 w-full object-cover object-[center_30%] md:h-80"
+          className="aspect-[1313/1198] w-full object-cover"
         />
       )}
       <div className="flex flex-1 flex-col p-5">
