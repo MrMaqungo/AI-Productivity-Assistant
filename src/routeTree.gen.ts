@@ -10,11 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChatRouteImport } from './routes/chat'
+import { Route as EmailRouteImport } from './routes/email'
+import { Route as MeetingsRouteImport } from './routes/meetings'
+import { Route as PlannerRouteImport } from './routes/planner'
+import { Route as PromptLabRouteImport } from './routes/prompt-lab'
+import { Route as RepliesRouteImport } from './routes/replies'
+import { Route as StudioRouteImport } from './routes/studio'
 import { Route as ApiAiRouteImport } from './routes/api/ai'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatRoute = ChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailRoute = EmailRouteImport.update({
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetingsRoute = MeetingsRouteImport.update({
+  id: '/meetings',
+  path: '/meetings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlannerRoute = PlannerRouteImport.update({
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromptLabRoute = PromptLabRouteImport.update({
+  id: '/prompt-lab',
+  path: '/prompt-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RepliesRoute = RepliesRouteImport.update({
+  id: '/replies',
+  path: '/replies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioRoute = StudioRouteImport.update({
+  id: '/studio',
+  path: '/studio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAiRoute = ApiAiRouteImport.update({
@@ -25,27 +67,83 @@ const ApiAiRoute = ApiAiRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/email': typeof EmailRoute
+  '/meetings': typeof MeetingsRoute
+  '/planner': typeof PlannerRoute
+  '/prompt-lab': typeof PromptLabRoute
+  '/replies': typeof RepliesRoute
+  '/studio': typeof StudioRoute
   '/api/ai': typeof ApiAiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/email': typeof EmailRoute
+  '/meetings': typeof MeetingsRoute
+  '/planner': typeof PlannerRoute
+  '/prompt-lab': typeof PromptLabRoute
+  '/replies': typeof RepliesRoute
+  '/studio': typeof StudioRoute
   '/api/ai': typeof ApiAiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chat': typeof ChatRoute
+  '/email': typeof EmailRoute
+  '/meetings': typeof MeetingsRoute
+  '/planner': typeof PlannerRoute
+  '/prompt-lab': typeof PromptLabRoute
+  '/replies': typeof RepliesRoute
+  '/studio': typeof StudioRoute
   '/api/ai': typeof ApiAiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/ai'
+  fullPaths:
+    | '/'
+    | '/chat'
+    | '/email'
+    | '/meetings'
+    | '/planner'
+    | '/prompt-lab'
+    | '/replies'
+    | '/studio'
+    | '/api/ai'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/ai'
-  id: '__root__' | '/' | '/api/ai'
+  to:
+    | '/'
+    | '/chat'
+    | '/email'
+    | '/meetings'
+    | '/planner'
+    | '/prompt-lab'
+    | '/replies'
+    | '/studio'
+    | '/api/ai'
+  id:
+    | '__root__'
+    | '/'
+    | '/chat'
+    | '/email'
+    | '/meetings'
+    | '/planner'
+    | '/prompt-lab'
+    | '/replies'
+    | '/studio'
+    | '/api/ai'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatRoute: typeof ChatRoute
+  EmailRoute: typeof EmailRoute
+  MeetingsRoute: typeof MeetingsRoute
+  PlannerRoute: typeof PlannerRoute
+  PromptLabRoute: typeof PromptLabRoute
+  RepliesRoute: typeof RepliesRoute
+  StudioRoute: typeof StudioRoute
   ApiAiRoute: typeof ApiAiRoute
 }
 
@@ -56,6 +154,55 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chat': {
+      id: '/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email': {
+      id: '/email'
+      path: '/email'
+      fullPath: '/email'
+      preLoaderRoute: typeof EmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meetings': {
+      id: '/meetings'
+      path: '/meetings'
+      fullPath: '/meetings'
+      preLoaderRoute: typeof MeetingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planner': {
+      id: '/planner'
+      path: '/planner'
+      fullPath: '/planner'
+      preLoaderRoute: typeof PlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prompt-lab': {
+      id: '/prompt-lab'
+      path: '/prompt-lab'
+      fullPath: '/prompt-lab'
+      preLoaderRoute: typeof PromptLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/replies': {
+      id: '/replies'
+      path: '/replies'
+      fullPath: '/replies'
+      preLoaderRoute: typeof RepliesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio': {
+      id: '/studio'
+      path: '/studio'
+      fullPath: '/studio'
+      preLoaderRoute: typeof StudioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/ai': {
@@ -70,6 +217,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatRoute: ChatRoute,
+  EmailRoute: EmailRoute,
+  MeetingsRoute: MeetingsRoute,
+  PlannerRoute: PlannerRoute,
+  PromptLabRoute: PromptLabRoute,
+  RepliesRoute: RepliesRoute,
+  StudioRoute: StudioRoute,
   ApiAiRoute: ApiAiRoute,
 }
 export const routeTree = rootRouteImport
