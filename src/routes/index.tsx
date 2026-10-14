@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Mail, NotebookPen, CalendarCheck, MessagesSquare, Shirt, MessageCircleReply, FlaskConical, Clock, ArrowRight } from "lucide-react";
+import { Mail, NotebookPen, CalendarCheck, MessagesSquare, Shirt, MessageCircleReply, FlaskConical, Clock, ArrowRight, MessageCircle } from "lucide-react";
 import hero from "@/assets/hero.jpg";
+import campaign from "@/assets/ntethe-campaign.png.asset.json";
 import { BrushDivider } from "@/components/brand";
+import { Button } from "@/components/ui/button";
 import { getActivity, minutesSaved, type Activity } from "@/lib/activity";
 import { PROMPTS, TIME_SAVED_MIN, type Feature } from "@/lib/prompts";
 
@@ -47,6 +49,36 @@ function Dashboard() {
               <span className="font-serif text-2xl text-gold">{total >= 60 ? `${(total / 60).toFixed(1)} h` : `${total} min`}</span>{" "}
               saved so far
             </span>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid overflow-hidden rounded-xl border bg-card fade-up md:grid-cols-[1.05fr_1fr]">
+        <img
+          src={campaign.url}
+          alt="Ntethe campaign shot: model in the black hoodie, joggers and tartan cap on concrete steps at golden hour, with the Khayelitsha sign and Table Mountain behind"
+          width={1313}
+          height={1198}
+          className="h-80 w-full object-cover object-[center_30%] md:h-full"
+        />
+        <div className="flex flex-col justify-center gap-4 p-8 md:p-10">
+          <p className="font-script text-2xl text-gold">Kasi Roots. Bigger Dreams.</p>
+          <h2 className="text-4xl leading-tight">Wear Your Brand.</h2>
+          <BrushDivider className="max-w-[160px]" />
+          <p className="text-sm text-muted-foreground">
+            Shot in Khayelitsha at golden hour — the oversized hoodie, matching joggers and tartan cap you'll find in the Style Studio.
+          </p>
+          <div className="mt-1 flex flex-wrap gap-2">
+            <Button asChild variant="gold" size="sm">
+              <Link to="/studio">
+                <Shirt /> Shop the look
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="sm">
+              <a href="https://wa.me/27637544847" target="_blank" rel="noreferrer">
+                <MessageCircle /> Order on WhatsApp
+              </a>
+            </Button>
           </div>
         </div>
       </section>
