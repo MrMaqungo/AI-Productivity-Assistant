@@ -35,8 +35,8 @@ function Dashboard() {
   return (
     <div className="space-y-12">
       <section className="relative overflow-hidden rounded-xl border fade-up">
-        <img src={hero} alt="Model in Ntethe oversized tee and joggers" width={1536} height={864} className="absolute inset-0 h-full w-full object-cover opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+        <img src={hero} alt="Model in Ntethe oversized tee and joggers" width={1536} height={864} className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
         <div className="relative max-w-xl p-8 md:p-14">
           <p className="font-script text-2xl text-gold">Kasi Roots. Global Mindset.</p>
           <h1 className="mt-2 text-5xl leading-[1.05] md:text-6xl">Work smart. Wear your brand.</h1>
