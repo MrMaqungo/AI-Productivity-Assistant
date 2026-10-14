@@ -36,7 +36,7 @@ function PlannerPage() {
 
   const generate = () => {
     const valid = tasks.filter((t) => t.text.trim());
-    if (!valid.length) return toast.error("Add at least one task.");
+    if (!valid.length) return void toast.error("Add at least one task.");
     ai.run(
       `Plan type: ${mode}\nTasks:\n` +
         valid.map((t) => `- ${t.text} (urgent: ${t.urgent ? "yes" : "no"}, important: ${t.important ? "yes" : "no"})`).join("\n"),

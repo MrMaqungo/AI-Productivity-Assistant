@@ -25,7 +25,7 @@ function MeetingsPage() {
   const [notes, setNotes] = useState("");
   const ai = useAI("meetings", "Meeting summarised");
   const generate = () => {
-    if (notes.trim().length < 40) return toast.error("Paste a bit more of your notes (at least a few sentences).");
+    if (notes.trim().length < 40) return void toast.error("Paste a bit more of your notes (at least a few sentences).");
     ai.run(notes);
   };
   return (

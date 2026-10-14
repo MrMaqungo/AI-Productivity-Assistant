@@ -95,7 +95,7 @@ function Studio() {
   const complete = QUIZ.every((q) => answers[q.key]);
 
   const go = async () => {
-    if (!complete) return toast.error("Answer all 5 questions first.");
+    if (!complete) return void toast.error("Answer all 5 questions first.");
     setLooks(null);
     const text = await ai.run(QUIZ.map((q) => `${q.q} ${answers[q.key]}`).join("\n"));
     if (!text) return;

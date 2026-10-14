@@ -40,7 +40,7 @@ function PromptLab() {
   const ref = useAI(feature, "Prompt Lab: refined");
 
   const compare = async () => {
-    if (input.trim().length < 3) return toast.error("Add a test input.");
+    if (input.trim().length < 3) return void toast.error("Add a test input.");
     await Promise.all([orig.run(input, "original"), ref.run(input, "refined")]);
   };
 

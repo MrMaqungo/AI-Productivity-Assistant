@@ -31,7 +31,7 @@ function EmailPage() {
   const ai = useAI("email", `${tone} email to ${audience}`);
 
   const generate = () => {
-    if (purpose.trim().length < 3) return toast.error("Tell us what the email is for.");
+    if (purpose.trim().length < 3) return void toast.error("Tell us what the email is for.");
     ai.run(`Purpose: ${purpose}\nKey details: ${details || "none"}\nTone: ${tone}\nAudience: ${audience}`);
   };
 

@@ -9,7 +9,7 @@ export function TwoCol({ form, output }: { form: ReactNode; output: ReactNode })
   );
 }
 
-export function Field({ label, children, hint }: { label: string; children: ReactNode; hint?: string }) {
+export function Field({ label, children, hint }: { label: string; children: ReactNode; hint?: string | undefined }) {
   return (
     <label className="block space-y-1.5">
       <span className="text-sm font-medium">{label}</span>

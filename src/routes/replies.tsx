@@ -29,7 +29,7 @@ function RepliesPage() {
   const [lang, setLang] = useState<keyof typeof LANGS>("english");
   const ai = useAI("replies", `${LANGS[lang]} reply`);
   const generate = () => {
-    if (query.trim().length < 5) return toast.error("Paste the customer's message first.");
+    if (query.trim().length < 5) return void toast.error("Paste the customer's message first.");
     ai.run(`Language/tone: ${LANGS[lang]}\nCustomer message: ${query}`);
   };
   return (

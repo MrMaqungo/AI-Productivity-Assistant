@@ -5,17 +5,17 @@ import { logActivity } from "./activity";
 
 export type AIRequest = {
   feature: Feature;
-  variant?: "original" | "refined";
+  variant?: "original" | "refined" | undefined;
   input?: string;
-  messages?: { role: "user" | "assistant"; content: string }[];
+  messages?: undefined | { role: "user" | "assistant"; content: string }[];
 };
 
-export async function streamAI(req: AIRequest, onText: (full: string) => void, signal?: AbortSignal) {
+export async function streamAI(req: AIRequest, onText: (full: string) => void, signal?: AbortSignal | null) {
   const res = await fetch("/api/ai", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(req),
-    signal,
+    signal: signal ?? null,
   });
   if (!res.ok || !res.body) {
     const data = await res.json().catch(() => ({}));
