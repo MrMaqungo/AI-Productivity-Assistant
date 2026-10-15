@@ -45,7 +45,7 @@ function Dashboard() {
         />
         <div className="flex flex-col justify-center gap-4 p-8 md:p-10">
           <p className="font-script text-2xl text-gold">Kasi Roots. Bigger Dreams.</p>
-          <h2 className="text-4xl leading-tight">Wear Your Brand.</h2>
+          <h1 className="text-4xl leading-tight">Wear Your Brand.</h1>
           <BrushDivider className="max-w-[160px]" />
           <p className="text-sm text-muted-foreground">
             Shot in Khayelitsha at golden hour — the oversized hoodie, matching joggers and tartan cap you'll find in the Style Studio.
