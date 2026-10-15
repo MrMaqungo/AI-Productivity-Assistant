@@ -1,11 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Mail, NotebookPen, CalendarCheck, MessagesSquare, Shirt, MessageCircleReply, FlaskConical, Clock, ArrowRight, MessageCircle } from "lucide-react";
-import hero from "@/assets/hero.jpg";
+import { Mail, NotebookPen, CalendarCheck, MessagesSquare, Shirt, MessageCircleReply, FlaskConical, ArrowRight, MessageCircle } from "lucide-react";
 import campaign from "@/assets/ntethe-campaign.png.asset.json";
 import { BrushDivider } from "@/components/brand";
 import { Button } from "@/components/ui/button";
-import { getActivity, minutesSaved, type Activity } from "@/lib/activity";
+import { getActivity, type Activity } from "@/lib/activity";
 import { PROMPTS, TIME_SAVED_MIN, type Feature } from "@/lib/prompts";
 
 export const Route = createFileRoute("/")({
@@ -32,26 +31,9 @@ const CARDS: { feature: Feature; to: string; icon: typeof Mail; desc: string }[]
 function Dashboard() {
   const [activity, setActivity] = useState<Activity[]>([]);
   useEffect(() => setActivity(getActivity()), []);
-  const total = minutesSaved(activity);
 
   return (
     <div className="space-y-12">
-      <section className="relative overflow-hidden rounded-xl border fade-up">
-        <img src={hero} alt="Model in Ntethe oversized tee and joggers" width={1536} height={864} className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-        <div className="relative max-w-xl p-8 md:p-14">
-          <p className="font-script text-2xl text-gold">Kasi Roots. Global Mindset.</p>
-          <h1 className="mt-2 text-5xl leading-[1.05] md:text-6xl">Work smart. Wear your brand.</h1>
-          <p className="mt-4 text-muted-foreground">Your AI assistant for the admin behind quality streetwear — so you can spend more time building Ntethe.</p>
-          <div className="mt-6 inline-flex items-center gap-3 rounded-md border border-gold/40 bg-background/70 px-4 py-3">
-            <Clock className="h-5 w-5 text-gold" />
-            <span className="text-sm">
-              <span className="font-serif text-2xl text-gold">{total >= 60 ? `${(total / 60).toFixed(1)} h` : `${total} min`}</span>{" "}
-              saved so far
-            </span>
-          </div>
-        </div>
-      </section>
 
       <section className="grid overflow-hidden rounded-xl border bg-card fade-up md:grid-cols-[1.05fr_1fr]">
         <img
@@ -63,7 +45,7 @@ function Dashboard() {
         />
         <div className="flex flex-col justify-center gap-4 p-8 md:p-10">
           <p className="font-script text-2xl text-gold">Kasi Roots. Bigger Dreams.</p>
-          <h2 className="text-4xl leading-tight">Wear Your Brand.</h2>
+          <h1 className="text-4xl leading-tight">Wear Your Brand.</h1>
           <BrushDivider className="max-w-[160px]" />
           <p className="text-sm text-muted-foreground">
             Shot in Khayelitsha at golden hour — the oversized hoodie, matching joggers and tartan cap you'll find in the Style Studio.
