@@ -1,10 +1,15 @@
+import mark from "@/assets/ntethe-mark.png.asset.json";
+import { cn } from "@/lib/utils";
+
 export function Monogram({ className = "" }: { className?: string }) {
   return (
-    <span
-      className={`inline-flex h-10 w-10 items-center justify-center rounded-full border border-gold font-serif text-lg text-gold ${className}`}
-    >
-      TN
-    </span>
+    <img
+      src={mark.url}
+      alt="Ntethe"
+      width={600}
+      height={600}
+      className={cn("h-10 w-10 shrink-0", className)}
+    />
   );
 }
 
